@@ -46,7 +46,7 @@ function routes(){
 
 
     // externas  
-
+    app.use('/api/external/torreApi', require('./routes/torreApi/torreApi.routes'))
 
 
     // internas 

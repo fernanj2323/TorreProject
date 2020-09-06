@@ -11,7 +11,11 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     CommonModule
   ],
 
-  declarations: [NavbarComponent], 
+  declarations: 
+  [
+    NavbarComponent
+  ], 
+
   exports: [
     NavbarComponent
 

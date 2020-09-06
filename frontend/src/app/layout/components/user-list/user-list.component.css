@@ -1,0 +1,29 @@
+.margin{ 
+    margin-top: 33px;
+}
+
+.margin-bottom{
+    margin-bottom: 20px;
+}
+
+.card{
+    background-color: #78909c     ;
+    padding: 2%;
+}
+
+.colorBTN{
+    background-color: #37474f;
+    color: #cddc39
+}
+
+.lime-span{ 
+    color: #cddc39;
+    font-size: large;
+}
+
+.img{
+    margin:5px;
+    border-radius: 100%;
+    width: 100px;
+    height: 100px;
+}

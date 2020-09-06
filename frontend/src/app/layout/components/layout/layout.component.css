@@ -1,0 +1,19 @@
+.margin{ 
+    margin-top: 75px;
+}
+
+.margin-bottom{
+    margin-bottom: 20px;
+}
+
+.card{
+    background-color: #78909c     ;
+}
+
+.colorBTN{
+    background-color: #37474f;
+    color: #cddc39
+}
+span{ 
+    color: #cddc39
+}

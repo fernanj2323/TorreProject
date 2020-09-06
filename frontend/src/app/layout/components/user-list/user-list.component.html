@@ -1,0 +1,43 @@
+<div class="col s12  card margin"> 
+    <div class="col s12 card-header">
+
+        <div class="col s2">
+            <img  class="img"  [src]="selectedUser.picture"> 
+        </div>
+
+        
+        <div class="col s10 left">
+            <div class="col s12">
+                <span class="lime-span"> 
+                   <b> {{selectedUser.name}} </b> 
+                </span>
+            </div>
+            <div class="col s12">
+                <span> 
+                   <b> {{selectedUser.professionalHeadline}} </b>
+                </span>
+            </div>
+            <div class="col s12">
+                <span> 
+                    {{selectedUser.location.shortName}}
+                </span>
+            </div>
+         
+          
+            
+         
+        </div>
+      
+        
+       
+      
+    </div>
+
+    <div class="col s12 card-body">
+          <div class="col s3"></div>
+        
+          <div class="col s3"> <a class="waves-effect waves-light btn colorBTN">Save to watch list</a></div>
+          <div class="col s3">  </div>
+    </div>
+
+</div>
