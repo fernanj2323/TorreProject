@@ -34,13 +34,17 @@ apiTorre.getPeopleByName   = async ( req, res , next ) =>{
     const name =  req.body.name 
 
     params = {
-        'name': '$fernando',
+        
+        '[name': '$fernando',
         size: 10
+
       }
 
 
         try { 
-            const resp = await axios.post('https://search.torre.co/people/_search/', params); 
+            const resp = await axios.post('https://search.torre.co/people/_search/', params);
+            
+         
             res.status(200).send({
 
                            data: resp.data,
