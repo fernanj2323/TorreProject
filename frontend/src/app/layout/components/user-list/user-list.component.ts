@@ -25,7 +25,7 @@ export class UserListComponent implements OnInit {
   }
 
   CaptureSelectedUser(selectedUser){
-  
+    
    
 
     const array = ({
@@ -34,7 +34,7 @@ export class UserListComponent implements OnInit {
       picture: selectedUser.picture, 
       publicId: selectedUser.publicId,
       professionalHeadline: selectedUser.professionalHeadline, 
-      location: location,
+      location: selectedUser.location.name,
       selectedStatus: 0,
       color: 'transparent'
     })

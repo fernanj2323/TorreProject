@@ -39,14 +39,14 @@ export class SelectedUsersListComponent implements OnInit {
   capureSelectedUser(user:SelectedUser ){
 
     const array =  ({
-      color: 'light-blue darken-4', 
+      color: ' lime darken-3', 
       selectedStatus: 1 
     })
 
 
     this.profileService.putUserSelected(array, user._id).subscribe
     (res=>{
-        console.log(res)
+     
         const response = res as any 
         if (response.status == 200){
         
@@ -69,7 +69,7 @@ export class SelectedUsersListComponent implements OnInit {
 
     this.profileService.putUserSelected(array, user._id).subscribe
     (res=>{
-        console.log(res)
+      
         const response = res as any 
         if (response.status == 200){
         
@@ -84,7 +84,7 @@ export class SelectedUsersListComponent implements OnInit {
   deleteUser(id){
     this.profileService.deleteUserSelected(id).subscribe
     (res=>{
-        console.log(res)
+      
         const response = res as any 
         if (response.status == 200){
         

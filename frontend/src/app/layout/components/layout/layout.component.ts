@@ -65,10 +65,10 @@ export class LayoutComponent implements OnInit {
   }
 
   findSelectedProfile(username){
-    console.log('username', username)
+  
     this.torreApiService.getBioByUserName(username).subscribe
     (res=> {
-      console.log(res)
+    
       const response = res as any
       if (response.status == 200){
         this.user = response.data.person;
@@ -85,14 +85,14 @@ export class LayoutComponent implements OnInit {
 
 
   getPeopleByName(selected){
-    console.log('get by name ', selected)
+  
     this.torreApiService.getPeopleByName(selected).subscribe(
       res=>{
-        console.log(res)
+       
         this.users = res as any 
         this.showResult = true; 
       },err => {
-        console.log(err)
+    
         if (err.status == 300){
           M.toast({html: "this user does not exist" })
         }
@@ -113,8 +113,8 @@ export class LayoutComponent implements OnInit {
 
   CaptureSelectedUser(userSelected: SelectedUser){
     
-
-    
+ 
+ 
     this.profileService.postUserSelected(userSelected).subscribe
     (res=>{
     

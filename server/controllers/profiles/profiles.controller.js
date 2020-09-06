@@ -42,6 +42,7 @@ profileCTRL.getUsersSelectedById  = async ( req, res , next ) =>{
 
 profileCTRL.postUserSelected  = async ( req, res , next ) =>{
     
+ 
    
     const test  = new Profile (req.body);
 
@@ -52,11 +53,11 @@ profileCTRL.postUserSelected  = async ( req, res , next ) =>{
     })
 
 
-    console.log('lastest', lastTest)
+   
     if (!lastTest.length){
-        console.log('no existe previa', lastTest);
+    
         await test.save();
-        console.log(' created')
+      
         res.status(200).send({
             status: 200
         });
@@ -84,21 +85,18 @@ profileCTRL.save  = async ( req, res , next ) =>{
 }
 
 profileCTRL.putUserSelected  = async ( req, res , next ) =>{
-    console.log('putUserSelected');
-    console.log(req.params.id);
-    console.log(req.body);
 
     const id =  req.params.id;
     const array = req.body; 
 
     await Profile.findByIdAndUpdate(id, {$set: array}, {new: true}); 
-    // console.log('updated');
+ 
     res.status(200).send({status: 200})
 }
 
 
 profileCTRL.deleteUserSelected  = async ( req, res , next ) =>{
-     console.log('deleteUserSelected')
+    
     const id =req.params.id; 
     await Profile.findByIdAndRemove(id).exec((err, Document) =>{
         if(err){
