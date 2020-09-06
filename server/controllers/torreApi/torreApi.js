@@ -5,12 +5,10 @@ const apiTorre = {};
 
 apiTorre.getBioByUserName   = async ( req, res , next ) =>{
   
- 
 
-    
     const username =  req.params.username; 
 
-        try {
+        try { 
             const resp = await axios.get('https://torre.bio/api/bios/'+ username);
             
             res.status(200).send({
@@ -18,28 +16,48 @@ apiTorre.getBioByUserName   = async ( req, res , next ) =>{
                            status: 200
                        })
         } catch (err) {
-            // Handle Error Here
+            res.status(300).send({
+                
+                status: 300
+            })
             console.error(err);
         }
 
 }
 
 
+// https://search.torre.co/people/_search/?[name=$fernando&size=50
 
-// axios.get('https://torre.bio/api/bios/'+ username).exec((err, Data) =>{
-//     if(err){
-//         res.status(404).send({status:'err 404'})
-//     }else{ 
-//         if(!Data){
-//             res.status(500).send({status:'err 500'})
-//         } else{ 
-//             console.log(data)
-//             res.status(200).send(Data)
-//         }
-//     }
-// })
+apiTorre.getPeopleByName   = async ( req, res , next ) =>{
 
-// }
+
+    const name =  req.body.name 
+
+    params = {
+        'name': '$fernando',
+        size: 10
+      }
+
+
+        try { 
+            const resp = await axios.post('https://search.torre.co/people/_search/', params); 
+            res.status(200).send({
+
+                           data: resp.data,
+                           status: 200
+                       })
+        } catch (err) {
+         
+            res.status(300).send({
+                
+                status: 300
+            })
+          
+        }
+
+}
+
+
 
 // apiTorre.getProfileById  = async ( req, res , next ) =>{
   

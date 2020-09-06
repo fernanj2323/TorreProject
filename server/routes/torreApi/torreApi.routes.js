@@ -6,8 +6,8 @@ const TorreApi = require ('../../controllers/torreApi/torreApi');
 
 router.get('/bios/:username', TorreApi.getBioByUserName);
 
-// router.get('/getProfileById/:id', profile.getProfileById);
-// router.get('/getProfileByEmail/:id', profile.getProfileByEmail);
+router.post('/getPeopleByName', TorreApi.getPeopleByName);
+
 
 
 module.exports = router;

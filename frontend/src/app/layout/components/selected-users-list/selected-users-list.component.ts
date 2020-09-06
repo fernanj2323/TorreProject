@@ -39,7 +39,7 @@ export class SelectedUsersListComponent implements OnInit {
   capureSelectedUser(user:SelectedUser ){
 
     const array =  ({
-      color: 'blue', 
+      color: 'light-blue darken-4', 
       selectedStatus: 1 
     })
 

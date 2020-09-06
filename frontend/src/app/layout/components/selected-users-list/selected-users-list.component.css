@@ -29,6 +29,17 @@
     padding: 2%;
 }
 
+.card-header{ 
+    margin:1%
+}
+
 .colorDark{
     color:#37474f
+}
+
+.height{
+  
+    min-height: 500px;
+    max-height: 500px;
+    overflow-y: auto;  
 }

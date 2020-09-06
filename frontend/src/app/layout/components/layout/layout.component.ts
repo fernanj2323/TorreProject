@@ -18,12 +18,15 @@ declare var M: any;
 })
 export class LayoutComponent implements OnInit {
 
+  public user
   public users
   public selected ;
   public changueIcon = false 
   public type 
   public showResult = false 
+  public showPreloader =  false 
 
+  
   constructor(
     private torreApiService : TorreApiService , 
     private profileService: ProfileService 
@@ -34,26 +37,6 @@ export class LayoutComponent implements OnInit {
       this.material()
   }
 
-  findSelectedProfile(username){
-
-
-    this.torreApiService.getBioByUserName(username).subscribe
-    (res=> {
-   
-      const response = res as any
-      if (response.status == 200){
-
-        this.users = response.data.person; 
-        this.showResult = true; 
-    }},err => {
-      
-      M.toast({html: 'server error'})
-    })
-    
-    
-   
-  
-}
 
 
   material(){
@@ -66,24 +49,62 @@ export class LayoutComponent implements OnInit {
 
 
   subitForm(form: NgForm){
-    
+      this.showPreloader = true 
       var selected = form.value.inputSelected
       this.type = form.value.type
      
 
       // username 
-      if (this.type == '1'){
+      // if (this.type == '1'){
         this.findSelectedProfile(selected)
+      // }
+      if (this.type == '2'){
+        this.getPeopleByName(selected)
       }
       
+  }
+
+  findSelectedProfile(username){
+    console.log('username', username)
+    this.torreApiService.getBioByUserName(username).subscribe
+    (res=> {
+      console.log(res)
+      const response = res as any
+      if (response.status == 200){
+        this.user = response.data.person;
+        this.showPreloader = false 
+        this.showResult = true; 
+    }},err => {
+
+      this.showPreloader = false 
+      this.showResult = false; 
+      M.toast({html: "this user does not exist" })
+    })
+
+}
+
+
+  getPeopleByName(selected){
+    console.log('get by name ', selected)
+    this.torreApiService.getPeopleByName(selected).subscribe(
+      res=>{
+        console.log(res)
+        this.users = res as any 
+        this.showResult = true; 
+      },err => {
+        console.log(err)
+        if (err.status == 300){
+          M.toast({html: "this user does not exist" })
+        }
+      })
+
   }
 
   capture(event){
 
     if (  
       event == '1' || 
-      event == '2'|| 
-      event == '3'  
+      event == '2'  
            ){
               this.changueIcon = true
            }
@@ -91,8 +112,8 @@ export class LayoutComponent implements OnInit {
  
 
   CaptureSelectedUser(userSelected: SelectedUser){
-    console.log('padre')
-    console.log(userSelected)
+    
+
     
     this.profileService.postUserSelected(userSelected).subscribe
     (res=>{

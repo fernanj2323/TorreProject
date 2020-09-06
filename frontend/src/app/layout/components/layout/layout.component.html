@@ -6,26 +6,35 @@
                 <div class="col s12">
 
 
-                    <div class="input-field col s4">
+                    <!-- <div class="input-field col s4">
                         <select (change)="capture($event.target.value)" name="type" #type="ngModel" [(ngModel)]="this.selected.type"  >
                           <option value="" disabled selected>Choose category</option>
                           <option value="1">Username</option>
                           <option value="2">Name</option>
-                          <option value="3">Cargos</option>
+                     
                         </select>
                  
-                      </div>
+                      </div> -->
                     
-                    
-
+                    <div class="col s12">
+                       <h4> <b>Find user by Username     </b></h4> 
+                        
+                    </div>
+                   
+                      <div class="col s2"></div>
                       <div class="input-field col s8">
+                         
                             <i *ngIf="this.changueIcon == false" class="material-icons prefix">search</i>
-                            <i *ngIf="this.selected.type == '1'" class="material-icons prefix">person</i>
+                            <!-- <i *ngIf="this.selected.type == '1'" class="material-icons prefix">person</i>
                             <i *ngIf="this.selected.type == '2'"  class="material-icons prefix">text_format</i>
-                            <i *ngIf="this.selected.type == '3'" class="material-icons prefix">folder_special</i>
+                            <i *ngIf="this.selected.type == '3'" class="material-icons prefix">folder_special</i> -->
                             <input type="text" id="autocomplete-input" name="inputSelected" type="text" ngModel required >       
                      </div>
                         
+
+                     <div *ngIf="showPreloader" class="progress">
+                        <div class="indeterminate"></div>
+                    </div>
                 </div>
                
                 
@@ -34,18 +43,19 @@
             </form>
         </div>
 
-        <!-- resultados  -->
-        <div   *ngIf=showResult class="col s12">
+        
+        <div   *ngIf=" showResult"  class="col s12">
             
             <div>
-                <app-user-list (SelectedUser)="CaptureSelectedUser($event)" [selectedUser]="this.users"></app-user-list>
+                <app-user-list (SelectedUser)="CaptureSelectedUser($event)" [selectedUser]="this.user"></app-user-list>
             </div>
 
         </div>
+            
+            
+
        
      
 
-        <!-- usuarios sobresalientes  -->
-        <!-- <app-selected-users-list></app-selected-users-list> -->
     </div>
 </div>
