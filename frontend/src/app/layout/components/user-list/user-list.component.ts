@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input , Output, EventEmitter} from '@angular/core';
 import { SelectedUser } from 'src/app/models/selectedUser'
 import { TorreApiService } from 'src/app/core/services/torreApi/torre-api.service'
 import { from } from 'rxjs';
@@ -9,7 +9,10 @@ import { from } from 'rxjs';
 })
 export class UserListComponent implements OnInit {
 
+
+  
   @Input() selectedUser:any; 
+  @Output() SelectedUser: EventEmitter <any> = new EventEmitter(); 
 
   constructor( 
  
@@ -17,8 +20,27 @@ export class UserListComponent implements OnInit {
 
   ngOnInit() {
 
-    console.log('children')
  
+ 
+  }
+
+  CaptureSelectedUser(selectedUser){
+  
+
+    const array = ({
+      name: selectedUser.name,
+      created: selectedUser.created, 
+      picture: selectedUser.picture, 
+      publicId: selectedUser.publicId,
+      professionalHeadline: selectedUser.professionalHeadline, 
+      location: selectedUser.location.shortName,
+      selectedStatus: 0,
+      color: 'transparent'
+    })
+
+    this.SelectedUser.emit(array)
+
+    
   }
 
 }

@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http'
 })
 export class TorreApiService {
 
-// ':3000/api/health';
+
   readonly url: string ='http://'+ window.location.hostname +':3000/api/external/torreApi';
 
  

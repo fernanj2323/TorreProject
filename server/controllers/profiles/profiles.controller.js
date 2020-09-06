@@ -2,7 +2,7 @@ const Profile = require('../../models/profiles/selectedProfile')
 const profileCTRL = {};
 
 // get profiles 
-profileCTRL.getProfiles   = async ( req, res , next ) =>{
+profileCTRL.getUsersSelected   = async ( req, res , next ) =>{
   
     const test = await Profile.find(
     
@@ -20,9 +20,9 @@ profileCTRL.getProfiles   = async ( req, res , next ) =>{
 }
 
 
-profileCTRL.getProfileById  = async ( req, res , next ) =>{
+profileCTRL.getUsersSelectedById  = async ( req, res , next ) =>{
   
-    const test = await tracking.find({
+    const test = await Profile.find({
         _id: req.params.id
     }).exec((err, Data) =>{
             if(err){
@@ -37,44 +37,53 @@ profileCTRL.getProfileById  = async ( req, res , next ) =>{
         })
 }
 
-profileCTRL.getProfileByEmail  = async ( req, res , next ) =>{
-  
-    const test = await tracking.find({
-        email: req.params.email  
-    }).exec((err, Data) =>{
-            if(err){
-                res.status(404).send({status:'err 404'})
-            }else{ 
-                if(!Data){
-                    res.status(500).send({status:'err 500'})
-                } else{ 
-                    res.status(200).send(Data)
+
+
+
+profileCTRL.postUserSelected  = async ( req, res , next ) =>{
+    
+   
+    const test  = new Profile (req.body);
+
+    // antes debemos consultar si ya existe, por user Id 
+    const lastTest = await Profile.find(
+    {
+        publicId: req.body.publicId
+    })
+
+
+    console.log('lastest', lastTest)
+    if (!lastTest.length){
+        console.log('no existe previa', lastTest);
+        await test.save();
+        console.log(' created')
+        res.status(200).send({
+            status: 200
+        });
+    }else{
+        res.status(300).send({status:'error 300'})
+    }
+ 
+}
+
+profileCTRL.save  = async ( req, res , next ) =>{
+
+     
+        const test  = new Profile (req.body);
+        await test.save((err,Data) =>{
+            if (err){
+                res.status(500).send({status:'error 500'})
+            }else {
+                if (!Data){
+                    res.status(404).send({status: 'error 404'})
+                }else{ 
+                    res.status(200).send(Data);
                 }
             }
         })
 }
 
-
-
-profileCTRL.postProfile  = async ( req, res , next ) =>{
-  
-    const test  = new Profile (req.body);
-    await test.save((err,Data) =>{
-        if (err){
-            res.status(500).send({status:'error 500'})
-        }else {
-            if (!Data){
-                res.status(404).send({status: 'error 404'})
-            }else{ 
-                res.status(200).send(Data);
-            }
-        }
-    })
- 
-}
-
-
-profileCTRL.putProfile  = async ( req, res , next ) =>{
+profileCTRL.putUserSelected  = async ( req, res , next ) =>{
   
     const id =  req.params.id;
     const array = req.body; 
@@ -85,7 +94,7 @@ profileCTRL.putProfile  = async ( req, res , next ) =>{
 }
 
 
-profileCTRL.deleteProfile  = async ( req, res , next ) =>{
+profileCTRL.deleteUserSelected  = async ( req, res , next ) =>{
   
     const id =req.params.id; 
     await Profile.findByIdAndRemove(id).exec((err, Document) =>{

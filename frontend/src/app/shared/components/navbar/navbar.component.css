@@ -1,0 +1,26 @@
+.color{
+    background-color: #37474f;
+    color: #cddc39
+}
+
+.dropdown-trigger{
+    background-color: #37474f;
+    color: #cddc39;
+    width: 150px;
+}
+
+.dropdown-content{
+    background-color: #37474f;
+    color: #cddc39;
+
+}
+
+.hover:hover{
+    background-color:#cddc39 #37474f;
+    color: #37474f;
+  
+}
+
+.brand-logo{
+    margin-left: 2%;
+}

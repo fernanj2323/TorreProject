@@ -22,10 +22,7 @@
                     {{selectedUser.location.shortName}}
                 </span>
             </div>
-         
-          
-            
-         
+        
         </div>
       
         
@@ -36,7 +33,9 @@
     <div class="col s12 card-body">
           <div class="col s3"></div>
         
-          <div class="col s3"> <a class="waves-effect waves-light btn colorBTN">Save to watch list</a></div>
+          <div class="col s3"> 
+              <a (click)="CaptureSelectedUser(selectedUser)" class="waves-effect waves-light btn colorBTN">Save to watch list</a>
+            </div>
           <div class="col s3">  </div>
     </div>
 

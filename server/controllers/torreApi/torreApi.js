@@ -7,12 +7,12 @@ apiTorre.getBioByUserName   = async ( req, res , next ) =>{
   
  
 
-    console.log('feching ',  req.params.username)
+    
     const username =  req.params.username; 
 
         try {
             const resp = await axios.get('https://torre.bio/api/bios/'+ username);
-            console.log(resp.data);
+            
             res.status(200).send({
                            data: resp.data,
                            status: 200

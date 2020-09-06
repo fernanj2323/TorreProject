@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
 import { TorreApiService } from 'src/app/core/services/torreApi/torre-api.service'
+import { ProfileService } from 'src/app/core/services/profile/profile.service'
 import { NgForOf } from '@angular/common';
 import { NgForm } from '@angular/forms';
 import { from } from 'rxjs';
-
+import { SelectedUser } from 'src/app/models/selectedUser'
 declare var jQuery:any; 
 declare var $:any; 
 declare var Materialize: any; 
@@ -24,7 +25,8 @@ export class LayoutComponent implements OnInit {
   public showResult = false 
 
   constructor(
-    private torreApiService : TorreApiService 
+    private torreApiService : TorreApiService , 
+    private profileService: ProfileService 
   ) { }
 
   ngOnInit(){
@@ -86,5 +88,25 @@ export class LayoutComponent implements OnInit {
            }
   }
  
+
+  CaptureSelectedUser(userSelected: SelectedUser){
+    console.log('padre')
+    console.log(userSelected)
+    
+    this.profileService.postUserSelected(userSelected).subscribe
+    (res=>{
+    
+      var response = res as any 
+      if (response.status == 200){
+        M.toast({html: 'User Saved'})
+      }
+    
+    },err =>{
+       
+      if (err.status == 300){
+        M.toast({html: 'User was previously saved'})
+      }
+    })
+  }
 
 }
