@@ -15,7 +15,7 @@ services:
       - data-vol:/data
 
   node: #name of the second service
-    image: lupanode # specify the directory of the Dockerfile
+    image: torrenode # specify the directory of the Dockerfile
     ports:
       - "3000:3000" #specify ports forewarding
     links:
