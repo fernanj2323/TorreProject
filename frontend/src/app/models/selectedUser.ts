@@ -2,7 +2,7 @@
 export interface SelectedUser {
 
 
-    id? : string; 
+    _id? : string; 
     name:string; 
     created:string; 
     picture:string; 

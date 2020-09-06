@@ -1,1 +1,54 @@
-<p>selected-users-list works!</p>
+<div class="row">
+    <div class="container ">
+        <div class="col s12 card margin-top"  >
+            <div class="col s12 card-header center">
+                <h5> <b> Selected Users  </b> </h5>
+            </div>
+
+            <table class="centered">
+                <thead>
+                  <tr>
+                      <th> 
+                     
+
+                      </th>
+                      <th>Name</th>
+                      <th>UserName</th>
+                      <th>Location</th>
+                      <th>actions</th>
+                  </tr>
+                </thead>
+        
+                <tbody class="max-width">
+                    <tr *ngFor="let user of Users  " class={{user.color}}>
+                    <td> <img  class="img"  [src]="user.picture"> </td>
+                    <td>{{user.name}}</td>
+                    <td>{{user.publicId}}</td>
+                    <td>{{user.location}}</td>
+                    <td> 
+                        <div class="col s12">
+                            <div *ngIf="user.selectedStatus == 1" class="col s6">
+                                
+                                <a (click)="UnSelectedUser(user)" class=" pulse btn-floating waves-effect waves-light  lime "  ><i class="material-icons colorDark">highlight_off</i></a>
+                            </div>
+                            <div *ngIf="user.selectedStatus == 0" class="col s6">
+                                
+                                <a (click)="capureSelectedUser(user)" class=" pulse btn-floating waves-effect waves-light  lime "  ><i class="material-icons colorDark">highlight</i></a>
+                            </div>
+                            <div class="col s6">
+                                <a  (click)="deleteUser(user._id)"  class="  btn-floating waves-effect waves-light red"><i class="material-icons colorDark">delete</i></a>
+                            </div>
+                        </div>
+
+                    </td>
+                  </tr>
+                 
+                 
+                </tbody>
+              </table>
+                    
+
+        </div>
+    </div>\
+
+</div>

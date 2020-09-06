@@ -41,18 +41,19 @@ export class LayoutComponent implements OnInit {
     (res=> {
    
       const response = res as any
-
       if (response.status == 200){
-        console.log('200')
-       
+
         this.users = response.data.person; 
-        console.log(this.users)
         this.showResult = true; 
-      }else{
-          // aqui manejamos el error 
-      }
+    }},err => {
+      
+      M.toast({html: 'server error'})
     })
-  }
+    
+    
+   
+  
+}
 
 
   material(){
@@ -97,7 +98,7 @@ export class LayoutComponent implements OnInit {
     (res=>{
     
       var response = res as any 
-      if (response.status == 200){
+      if (response.status == 200 ){
         M.toast({html: 'User Saved'})
       }
     

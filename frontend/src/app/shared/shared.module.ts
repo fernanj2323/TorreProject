@@ -3,17 +3,22 @@ import { CommonModule } from '@angular/common';
 import { NavbarComponent } from './components/navbar/navbar.component';
 
 
+import { sharedRoutingModule } from './shared-routing.module';
+import { UserNamePipe } from './pipes/user-name.pipe'
 
 
 @NgModule({
 
   imports: [
-    CommonModule
+    CommonModule,
+    sharedRoutingModule
+  
   ],
 
   declarations: 
   [
-    NavbarComponent
+    NavbarComponent,
+    UserNamePipe
   ], 
 
   exports: [

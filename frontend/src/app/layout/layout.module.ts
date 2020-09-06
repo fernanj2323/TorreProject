@@ -6,12 +6,16 @@ import { LayoutComponent } from './components/layout/layout.component';
 import { SharedModule } from '../shared/shared.module'
 import { CoreModule } from '../core/core.module';
 import { SelectedUsersListComponent } from './components/selected-users-list/selected-users-list.component';
+import { layoutRoutesModule } from './layout.routes'
 
 @NgModule({
   declarations: [
     UserListComponent, 
-    LayoutComponent, SelectedUsersListComponent
+    LayoutComponent, 
+    SelectedUsersListComponent
+  
   ],
+  
    exports: [
     LayoutComponent, 
     UserListComponent
@@ -20,7 +24,9 @@ import { SelectedUsersListComponent } from './components/selected-users-list/sel
     CommonModule,
     SharedModule,
     CoreModule,
-    FormsModule
+    FormsModule,
+    layoutRoutesModule,
+    // NgxPaginationModule
   ]
 })
 export class LayoutModule { }
