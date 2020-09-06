@@ -1,22 +1,22 @@
-The project was developed with this technologies
+The project was developed with the following technologies
 - angular 
 - nodejs 
 - axios 
 - express 
-- mongodb
-- docker
-
-How to useit? 
-
-1. Find a profile form Torre DB, writing a username
-
-2. You can save this user in our DB, clicking  "save" button 
-
-3. Then, you can see these users saved in the "selected user" button in the navigation
-
-4. finally, we can edit and remove them from the table with the options in the "actions" column
+- mongodb 
 
 
-the project was deployed in digital ocean, and you can use it in this direction http://165.227.198.41 
+How to use it? 
+
+1. Find a profile from the Torre DB just writing the username.
+
+2. The usernames could be saved in our data base, just clicking the “save" button 
+
+3. Then, you could get the saved users in the "selected user" button in the navigation
+
+4. Finally, we could edit and remove them from the table with the options in the "actions" column
 
 
+The project was deployed in digital ocean, and you could use it in the following direction: http://165.227.198.41
+
+Fernando Piñango - 09/06/2020 
